@@ -7,11 +7,11 @@ defmodule Issues.CLI do
   Handles the command line interface.
   """
 
-  @spec run([binary()]) :: :ok
+  @spec main([binary()]) :: :ok
   @doc """
   Main entry point for the CLI.
   """
-  def run(argv) do
+  def main(argv) do
     argv
     |> parse_args
     |> process
