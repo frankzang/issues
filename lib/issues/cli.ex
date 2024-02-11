@@ -1,11 +1,13 @@
 defmodule Issues.CLI do
   @default_count 4
 
+  import Issues.TableFormatter, only: [print_table: 2]
+
   @moduledoc """
   Handles the command line interface.
   """
 
-  @spec run([binary()]) :: list()
+  @spec run([binary()]) :: :ok
   @doc """
   Main entry point for the CLI.
   """
@@ -13,6 +15,7 @@ defmodule Issues.CLI do
     argv
     |> parse_args
     |> process
+    |> print_table(["number", "created_at", "title"])
   end
 
   @spec parse_args([binary()]) :: :help | {String.t(), String.t(), integer()}
